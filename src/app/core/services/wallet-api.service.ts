@@ -7,7 +7,7 @@ export interface Wallet { id: number; phone: string; firstName: string; lastName
 export interface WalletPage { content: Wallet[]; totalElements: number; totalPages: number; number: number; size: number; }
 export interface CreateWalletDto { phone: string; firstName: string; lastName: string; pin?: string; }
 export interface TransferDto { senderPhone: string; receiverPhone: string; amount: number; description?: string; }
-export interface DepositDto { amount: number; description?: string; }
+export interface DepositDto { amount: number; paymentMethod: string; description?: string; }
 export interface WithdrawDto { walletId: number; phone: string; amount: number; description?: string; }
 export interface Transaction { id: number; type: string; amount: number; description?: string; senderPhone?: string; receiverPhone?: string; createdAt: string; status: string; }
 

@@ -115,9 +115,19 @@ export class DepositWithdrawComponent {
   onWithdraw(): void {
     if (this.withdrawForm.invalid || !this.withdrawClient) return;
     this.loadingWithdraw = true;
-    const { phone, amount, description } = this.withdrawForm.value;
-    this.walletApi.withdraw({ walletId: this.withdrawClient.id, phone: phone!, amount: amount!, description: description || undefined }).subscribe({
-      next: () => { this.notification.success(`Retrait de ${amount} XOF effectué !`); this.withdrawForm.reset(); this.withdrawClient = null; this.loadingWithdraw = false; },
+    const { phone, amount } = this.withdrawForm.value;
+    const dto = {
+      phoneNumber: phone!,
+      amount: amount!
+    };
+    console.log('📤 Envoi retrait:', JSON.stringify(dto));
+    this.walletApi.withdraw(dto).subscribe({
+      next: () => {
+        this.notification.success(`Retrait de ${amount} XOF effectué !`);
+        this.withdrawForm.reset();
+        this.withdrawClient = null;
+        this.loadingWithdraw = false;
+      },
       error: () => { this.loadingWithdraw = false; }
     });
   }

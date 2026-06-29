@@ -1,59 +1,36 @@
-# Badwallet
+# BadWallet Dashboard - Angular SPA
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+Application Angular 16+ de gestion de portefeuilles électroniques.
 
-## Development server
-
-To start a local development server, run:
+## 🚀 Lancer le projet
 
 ```bash
+npm install
 ng serve
-```
+Puis ouvrir http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🔗 Backend
+L'API doit tourner sur http://localhost:8080
 
-## Code scaffolding
+👥 Rôles
+Client : Dashboard, Transfert, Factures, Historique
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Agent : Liste portefeuilles, Création, Recherche, Dépôt/Retrait
 
-```bash
-ng generate component component-name
-```
+🛠️ Technologies
+Angular 16+ (Standalone Components)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Signals (State Management)
 
-```bash
-ng generate --help
-```
+Reactive Forms
 
-## Building
+RxJS / HttpClient
 
-To build the project run:
+Pipes personnalisés (XOF, Téléphone)
 
-```bash
-ng build
-```
+📁 Architecture
+core/ - Services, Guards, Interceptors
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+shared/ - Pipes, Validators, Composants UI
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+features/ - Dashboard, Transfer, Bills, Admin, Login

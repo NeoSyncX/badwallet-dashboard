@@ -75,7 +75,6 @@ export class LoginComponent {
     if (role === 'CLIENT') {
       this.walletApi.searchByPhone(phone!).subscribe({
         next: (wallet) => {
-          // ✅ Calcule le walletCode au format WLT-XXXXXXX
           const walletCode = 'WLT-' + String(wallet.id).padStart(7, '0');
           this.authService.login(phone!, 'CLIENT', walletCode, wallet.id);
           this.notification.success('Connexion réussie !');
@@ -83,9 +82,14 @@ export class LoginComponent {
         },
         error: () => {
           this.notification.error('Aucun portefeuille trouvé pour ce numéro.');
-          this.loading = false;
+          this.loading = false;  // ✅ important
         }
       });
+    } else {
+      // Agent : connexion directe sans API
+      this.authService.login(phone!, 'AGENT');
+      this.notification.success('Connexion agent réussie !');
+      this.loading = false;
     }
   }
 }
